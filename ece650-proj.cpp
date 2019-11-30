@@ -81,8 +81,16 @@ int main(
                 // Call adjacency_matrix 
                 if (graph.adjacency_matrix(err_msg)){
                     std::vector<int> vertex_cover = graph.vertex_cover();
-                    graph.print_vertex_cover(vertex_cover);            
+                    std::string msg = "CNF-SAT-VC: ";
+                    graph.print_vertex_cover(msg, vertex_cover);
 
+                    std::vector<int> vertex_cover_approx_1 = graph.approx_VC_1();
+                    msg = "APPROX-VC-1: ";
+                    graph.print_vertex_cover(msg, vertex_cover_approx_1);
+
+                    std::vector<int> vertex_cover_approx_2 = graph.approx_VC_2();   
+                    msg = "APPROX-VC-2: ";
+                    graph.print_vertex_cover(msg, vertex_cover_approx_2);
 
                 } else {
                     error(err_msg);
@@ -91,16 +99,17 @@ int main(
                 break;
             case 's': 
                 // Call dijkstra. nums contains the source and target. Short_path will return the shortest path.               
-                if (graph.dijkstra(nums, short_path, err_msg)){
-                    if(print_short_path(short_path)){
-                        break;
-                    } 
-                    error("There was a problem when printing the shortest path");
-                    break;
-                }
+                // if (graph.dijkstra(nums, short_path, err_msg)){
+                //     if(print_short_path(short_path)){
+                //         break;
+                //     } 
+                //     error("There was a problem when printing the shortest path");
+                //     break;
+                // }
                 // else{
                 //     error("Something went wrong");
                 // }
+                std::cout << "The s command has been disabilitated. Please contact the adminsitrators: Natalia and Juan" << std::endl;
             default: error(err_msg);
             }
         } else {

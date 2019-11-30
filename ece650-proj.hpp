@@ -22,11 +22,22 @@ public:
     /// Creates the adjacency matrix
     bool adjacency_matrix(std::string &err_msg);
     /// Calculates the shortest path
-    bool dijkstra(std::list<unsigned> coordinates, std::vector<unsigned> &short_path, std::string &err_msg);
-    /// Check satisfiability and return vertex cover
+    // bool dijkstra(std::list<unsigned> coordinates, std::vector<unsigned> &short_path, std::string &err_msg);
+
+    /// Check satisfiability and return vertex cover with miniSAT
     std::vector<int> vertex_cover();
+    /* Returns approxiamtion 1 vertex cover: Pick a vertex of highest degree (most incident edges). 
+    Add it to your vertex cover and throw away all edges incident on that vertex. Repeat till no edges remain.*/
+    std::vector<int> approx_VC_1();
+    /* Returns approximation 2 vertex cover: Pick an edge (u,v), and add both u and v to your vertex cover. 
+    Throw away all edges attached to u and v. Repeat till no edges remain. */
+    std::vector<int> approx_VC_2();
+    /// Check satisfiability with a specific k
+    bool k_vertex_cover(int k, std::vector<std::vector<int>> adj_mat_mod, std::vector<int> &res_vec);
+    // /// Get approx_VC_1
+    // bool approx_VC_1(std::vector<std::vector<int>> adj_mat_mod, std::vector<int> &res_vec);
     /// Print vertex cover
-    bool print_vertex_cover(std::vector<int> vertex_cover);
+    bool print_vertex_cover(std::string &msg, std::vector<int> vertex_cover);
 };
 
 /**
