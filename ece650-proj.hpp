@@ -7,6 +7,7 @@ class Graph
     int m_num_vertices;
     std::vector<std::vector<int>> m_adj_mat;
     std::list<unsigned> m_edges;
+    // std::unique_ptr<Minisat::Solver> solver;
 
 public:
     /// Constructor. Creates a register with initial value of 0
@@ -15,6 +16,8 @@ public:
     void set_num_vertices(int t_num_vertices);
     /// Returns the number of vertices
     int get_num_vertices();
+    /// Returns the adjacency matrix
+    std::vector<std::vector<int>> get_adj_mat(); 
     /// Sets the graph vertices entered
     void set_edges(std::list<unsigned> &t_edges);
     /// Initializes adjacency matrix
@@ -25,7 +28,7 @@ public:
     // bool dijkstra(std::list<unsigned> coordinates, std::vector<unsigned> &short_path, std::string &err_msg);
 
     /// Check satisfiability and return vertex cover with miniSAT
-    std::vector<int> vertex_cover();
+    void * vertex_cover(void * res_vec_VC);
     /* Returns approxiamtion 1 vertex cover: Pick a vertex of highest degree (most incident edges). 
     Add it to your vertex cover and throw away all edges incident on that vertex. Repeat till no edges remain.*/
     std::vector<int> approx_VC_1();

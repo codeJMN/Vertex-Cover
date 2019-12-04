@@ -11,17 +11,17 @@ endif()
 ## Project specific configurations go here
 
 # enable c++11 support
-set (CMAKE_CXX_FLAGS "-std=c++11 -Wall ${CMAKE_CXX_FLAGS}")
-set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=*, -fuchsia-default-arguments, -google-runtime-references")
+set (CMAKE_CXX_FLAGS "-std=c++11 -Wall -pthread${CMAKE_CXX_FLAGS}")
+# set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=*, -fuchsia-default-arguments, -google-runtime-references")
 
 # create the main executable
 # expose minisat header files
 include_directories(${CMAKE_SOURCE_DIR}/minisat)
 ## add additional .cpp files if needed
 #add_executable(ece650-minisat ece650-minisat.cpp)
-add_executable(ece650-proj ece650-proj.cpp parse_line.cpp graph.cpp)
+add_executable(ece650-prj ece650-proj.cpp parse_line.cpp graph.cpp)
 # link minisat library with the main executable
-target_link_libraries(ece650-proj minisat-lib-static)
+target_link_libraries(ece650-prj minisat-lib-static)
 
 
 
